@@ -1,68 +1,52 @@
 # Library Management System
 
-This project is a Library Management System implemented in Node.js, Express.js, and PostgreSQL. It provides endpoints to manage books, borrowers, and borrowing operations in a library.
+## Introduction
+This project is a Library Management System built using Node.js, Express.js, and PostgreSQL. It provides endpoints for managing books, borrowers, and borrowing operations in a library.
 
-## Installation
+## Getting Started
+To run this project locally, follow these steps:
 
-1. Clone the repository to your local machine:
+### Prerequisites
+- Ensure you have PostgreSQL installed and running on your machine.
 
-    ```bash
-    git clone https://github.com/yourusername/library-management-system.git
+### Installation
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+
+### Configuration
+1. Create a `.env` file in the project root directory.
+2. Add the following variables to the `.env` file with your database credentials:
+
+    ```
+    DATABASE_USER=your_database_user
+    DATABASE_HOST=your_database_host
+    DATABASE_NAME=your_database_name
+    DATABASE_PASSWORD=your_database_password
+    DATABASE_PORT=your_database_port
+    PORT=3001
     ```
 
-2. Navigate to the project directory:
+    Replace `your_database_user`, `your_database_host`, `your_database_name`, `your_database_password`, and `your_database_port` with your actual database credentials.
 
-    ```bash
-    cd library-management-system
-    ```
+### Database Setup
+1. Create a PostgreSQL database for the project.
+2. Run the provided SQL scripts located in the `database-initialization.sql` file in the repository to create the necessary database tables.
 
-3. Install dependencies:
-
+### Running the Server
+1. Install modules needed by command:
     ```bash
     npm install
     ```
-
-## Usage
-
-1. Ensure you have PostgreSQL installed and running on your machine.
-
-2. Create a PostgreSQL database for the project.
-
-3. Set up the database connection by modifying the `config/db.js` file with your database credentials.
-
-4. Create the necessary database tables by running the provided SQL scripts located in the `database` directory.
-
-5. Start the server:
+2. Start the server by running the following command:
 
     ```bash
-    npm start
+    npm start dev
     ```
 
-6. The server should now be running on `http://localhost:3001`.
+3. The server should now be running on `http://localhost:[yourport]`.
 
-## Endpoints
+## Usage
+Once the server is running, you can use tools like Postman to interact with the API endpoints.
 
-### Books
-
-- **GET /api/books**: Retrieve all books.
-- **GET /api/books/:id**: Retrieve a specific book by ID.
-- **POST /api/books**: Add a new book.
-- **PUT /api/books/:id**: Update a book.
-- **DELETE /api/books/:id**: Delete a book.
-- **GET /api/books/getby?title=title**: Search books by title.
-
-### Borrowers
-
-- **GET /api/borrowers**: Retrieve all borrowers.
-- **GET /api/borrowers/:id**: Retrieve a specific borrower by ID.
-- **POST /api/borrowers**: Register a new borrower.
-- **PUT /api/borrowers/:id**: Update a borrower.
-- **DELETE /api/borrowers/:id**: Delete a borrower.
-
-### Borrowing Operations
-
-- **GET /api/borrowing_operations**: Retrieve all borrowing operations.
-- **GET /api/borrowing_operations/getby?borrower_id=id**: Retrieve borrowing operations for a specific borrower.
-- **GET /api/borrowing_operations/overdue**: Retrieve overdue borrowing operations.
-- **POST /api/borrowing_operations**: Add a new borrowing operation.
-- **GET /api/borrowing_operations/return/:id**: Return a borrowing operation.
+## API Documentation
+For detailed information on the available endpoints and how to use them, refer to the provided Postman documentation.
