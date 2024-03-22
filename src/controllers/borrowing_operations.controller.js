@@ -3,6 +3,7 @@ const borrowing_operations_queries = require("../utils/queries/borrowing_operati
 const books_queries = require("../utils/queries/books_queries");
 const AppError = require("../utils/appError");
 
+// Get all borrowing operations
 const getBorrowingOperations = (request, response, next) => {
   pool.query(
     borrowing_operations_queries.getBorrowingOperations,
@@ -13,6 +14,7 @@ const getBorrowingOperations = (request, response, next) => {
   );
 };
 
+// Get borrowing operations for a specific borrower ID
 const getBorrowingOperationsForBorrowerId = (request, response, next) => {
   const { borrower_id } = request.query;
   pool.query(
@@ -20,13 +22,14 @@ const getBorrowingOperationsForBorrowerId = (request, response, next) => {
     [borrower_id],
     (error, results) => {
       if (error) return next(new AppError(error.message, 500));
-      if (!results.rows.length) return next(new AppError("Id not found", 404));
+      if (!results.rows.length)
+        return next(new AppError("Id not found", 404));
       response.status(200).json({ data: results.rows });
-      console.log(results.rows);
     }
   );
 };
 
+// Get overdue borrowing operations
 const getOverdueBorrowingOperations = (request, response, next) => {
   pool.query(
     borrowing_operations_queries.getOverdueBorrowingOperations,
@@ -37,6 +40,7 @@ const getOverdueBorrowingOperations = (request, response, next) => {
   );
 };
 
+// Add a new borrowing operation
 const addBorrowingOperation = (request, response, next) => {
   const borrower_id = request.body.borrower_id;
   const book_id = request.body.book_id;
@@ -73,6 +77,7 @@ const addBorrowingOperation = (request, response, next) => {
   });
 };
 
+// Return a borrowing operation
 const returnBorrowingOperation = (request, response, next) => {
   const id = request.params.id;
   pool.query(

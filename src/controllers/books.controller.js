@@ -3,16 +3,17 @@ const queries = require("../utils/queries/books_queries");
 const { validateBook } = require("../utils/checkers");
 const AppError = require("../utils/appError");
 
+// Get all books
 const getBooks = (request, response, next) => {
   pool.query(queries.getBooks, (error, results) => {
     if (error) {
       return next(new AppError(error.message, 500));
     }
-
     response.status(200).json({ data: results.rows });
   });
 };
 
+// Get a book by its ID
 const getBookById = (request, response, next) => {
   const id = parseInt(request.params.id);
 
@@ -27,6 +28,7 @@ const getBookById = (request, response, next) => {
   });
 };
 
+// Search for books by title, author, or ISBN
 const searchBooks = (request, response, next) => {
   const { title, author, ISBN } = request.query;
   const searchParams = [];
@@ -41,6 +43,7 @@ const searchBooks = (request, response, next) => {
   });
 };
 
+// Add a new book
 const addBook = (request, response, next) => {
   const { title, author, ISBN, quantity_available, shelf_location } =
     request.body;
@@ -63,6 +66,7 @@ const addBook = (request, response, next) => {
   });
 };
 
+// Clear all books
 const clearBooks = (request, response, next) => {
   pool.query(queries.clearBooks, (error, results) => {
     if (error) return next(new AppError(error.message, 500));
@@ -70,6 +74,7 @@ const clearBooks = (request, response, next) => {
   });
 };
 
+// Remove a book by its ID
 const removeBookById = (request, response, next) => {
   const id = request.params.id;
   pool.query(queries.removeBookById, [id], (error, results) => {
@@ -78,6 +83,7 @@ const removeBookById = (request, response, next) => {
   });
 };
 
+// Update a book by its ID
 const updateById = (request, response, next) => {
   let { title, author, ISBN, quantity_available, shelf_location } =
     request.body;

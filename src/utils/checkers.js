@@ -8,7 +8,7 @@ const validateBook = (book) => {
   if (typeof author !== "string" || author.length < 1) {
     throw new Error("Invalid author");
   }
-
+  //ISBN supposed to be a number consists of 13 digits
   if (typeof ISBN !== "string" || ISBN.length !== 13 || !/^\d+$/.test(ISBN)) {
     throw new Error("Invalid ISBN");
   }
@@ -28,7 +28,7 @@ const validateBorrower = (borrower) => {
   if (typeof name !== "string" || name.length < 1) {
     throw new Error("Invalid name");
   }
-
+  //input should be a valid email
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     throw new Error("Invalid email");
