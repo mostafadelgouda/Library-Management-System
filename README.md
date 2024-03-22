@@ -3,6 +3,9 @@
 ## Introduction
 This project is a Library Management System built using Node.js, Express.js, and PostgreSQL. It provides endpoints for managing books, borrowers, and borrowing operations in a library.
 
+## Database Strucure
+![alt text](image-1.png)
+
 ## Getting Started
 To run this project locally, follow these steps:
 
@@ -32,6 +35,7 @@ To run this project locally, follow these steps:
 1. Create a PostgreSQL database for the project.
 2. Run the provided SQL scripts located in the `database-initialization.sql` file in the repository to create the necessary database tables.
 
+
 ### Running the Server
 1. Install modules needed by command:
     ```bash
@@ -49,4 +53,4 @@ To run this project locally, follow these steps:
 Once the server is running, you can use tools like Postman to interact with the API endpoints.
 
 ## API Documentation
-For detailed information on the available endpoints and how to use them, refer to the provided Postman documentation.
+For detailed information on the available endpoints and how to use them, refer to the provided [Postman documentation](https://documenter.getpostman.com/view/33291356/2sA35A95s4).
